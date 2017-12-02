@@ -80,8 +80,6 @@
     <Compile Include="Infrastructure\Pages\RozetkaPage.cs" />
     <Compile Include="Infrastructure\Pages\ServicePage.cs" />
     <Compile Include="Infrastructure\Pages\WarrantyPage.cs" />
-    <Compile Include="Infrastructure\Reporting\Report Manager.cs" />
-    <Compile Include="Infrastructure\Reporting\Report.cs" />
     <Compile Include="Tests\Features\Warranty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

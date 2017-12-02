@@ -8,6 +8,7 @@
     using System.Linq;
     using TechTalk.SpecFlow;
     using NUnit.Framework;
+    using System.Threading;
 
     [Binding]
     class RozetkaSteps
