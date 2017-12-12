@@ -11,6 +11,7 @@
     using OpenQA.Selenium;
     using TechTalk.SpecFlow.Assist;
     using NUnit.Framework;
+    using System.Threading;
 
     [Binding]
     class WarrantySteps
@@ -24,14 +25,9 @@
         [Then(@"I see following messages")]
         public void ThenISeeFollowingMessages(Table table)
         {
-
-
             var errorMessages = table.CreateSet<ErrorMessages>();
             //table.CompareToSet(errorMessages);
             //<string<ErrorMessages>>()
-
-
-
         }
 
         [Then(@"Return request form is not submitted")]
@@ -39,15 +35,8 @@
         {
             var a = ServicePage.ReasonOfReturnHelpMessage.Text;
             var b = ServicePage.IssueDetailsDivHelpMessage.Text;
-
-
             var c = ServicePage.TypeOfReturnHelpMessage.Text;
             var d = ServicePage.TypeOfDeliveryHelpMessage.Text;
-
-
-
-
-
             Assert.IsTrue(ServicePage.ReasonOfReturnHelpMessage.Text.Equals(ServicePage.ReasonOfReturnMessage), "Incorrect Reason of Return error message");
             Assert.IsTrue(ServicePage.IssueDetailsDivHelpMessage.Text.Equals(ServicePage.IssueDetailsMessage), "Incorrect Isuue Details error message");
             Assert.IsTrue(ServicePage.TypeOfReturnHelpMessage.Text.Equals(ServicePage.TypeOfReturnMessage), "Incorrect Type of Return error message");
@@ -57,6 +46,7 @@
         [When(@"I submit Return request form without mandatory fields")]
         public void WhenISubmitReturnRequestFormWithoutMandatoryFields()
         {
+            Thread.Sleep(5000);
             Link.Click(PersonalCabinetPage.MenuBar.SelectMenuPoint("Гарантия"));
             Link.Click(WarrantyPage.ServiceLink);
             Link.Click(ServicePage.RequestReturnLinks.First());

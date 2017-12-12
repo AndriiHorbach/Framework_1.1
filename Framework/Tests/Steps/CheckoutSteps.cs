@@ -33,7 +33,7 @@
         {
             Page.Wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath("//*[@class='filter-parametrs-i']")));
             ((Page.Filters.ItemsForSection(filterSection)).First(i => i.Text.Contains(checkboxInSection))).Click();
-            Page.Wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy((By.XPath("//div[@tool_tip]/a/img"))));
+            Page.Wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy((By.XPath("//div[@tool_tip]/a/img"))));
         }
 
        [When(@"I proceed to checkout with (.*) name, (.*) mobile, (.*) e-mail")]
