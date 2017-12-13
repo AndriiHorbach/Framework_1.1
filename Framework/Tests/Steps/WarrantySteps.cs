@@ -5,13 +5,11 @@
     using Pages;
     using System.Linq;
     using TechTalk.SpecFlow;
-    using System.Collections.Generic;
     using Data;
     using OpenQA.Selenium.Support.UI;
     using OpenQA.Selenium;
     using TechTalk.SpecFlow.Assist;
     using NUnit.Framework;
-    using System.Threading;
 
     [Binding]
     class WarrantySteps
@@ -33,10 +31,7 @@
         [Then(@"Return request form is not submitted")]
         public void ThenReturnRequestFormIsNotSubmitted()
         {
-            var a = ServicePage.ReasonOfReturnHelpMessage.Text;
-            var b = ServicePage.IssueDetailsDivHelpMessage.Text;
-            var c = ServicePage.TypeOfReturnHelpMessage.Text;
-            var d = ServicePage.TypeOfDeliveryHelpMessage.Text;
+            ServicePage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(".//div[@id='scgoodsreturnmodel-reason']/following-sibling::div")));
             Assert.IsTrue(ServicePage.ReasonOfReturnHelpMessage.Text.Equals(ServicePage.ReasonOfReturnMessage), "Incorrect Reason of Return error message");
             Assert.IsTrue(ServicePage.IssueDetailsDivHelpMessage.Text.Equals(ServicePage.IssueDetailsMessage), "Incorrect Isuue Details error message");
             Assert.IsTrue(ServicePage.TypeOfReturnHelpMessage.Text.Equals(ServicePage.TypeOfReturnMessage), "Incorrect Type of Return error message");
@@ -46,7 +41,7 @@
         [When(@"I submit Return request form without mandatory fields")]
         public void WhenISubmitReturnRequestFormWithoutMandatoryFields()
         {
-            Thread.Sleep(5000);
+            PersonalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("whitelink")));
             Link.Click(PersonalCabinetPage.MenuBar.SelectMenuPoint("Гарантия"));
             Link.Click(WarrantyPage.ServiceLink);
             Link.Click(ServicePage.RequestReturnLinks.First());

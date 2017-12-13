@@ -8,10 +8,10 @@
         public ServicePage(IWebDriver driver) : base(driver) { }
 
         public string URL = "http://service.rozetka.com.ua/";
-        public string ReasonOfReturnMessage = "Причина возврата cannot be blank.";
-        public string IssueDetailsMessage = "Описание неисправности cannot be blank.";
-        public string TypeOfReturnMessage = "Цель возврата cannot be blank.";
-        public string TypeOfDeliveryMessage = "Способ отправки cannot be blank.";
+        public string ReasonOfReturnMessage = "Необходимо заполнить «Причина возврата».";
+        public string IssueDetailsMessage = "Необходимо заполнить «Описание неисправности».";
+        public string TypeOfReturnMessage = "Необходимо заполнить «Цель возврата».";
+        public string TypeOfDeliveryMessage = "Необходимо заполнить «Способ отправки».";
 
         public IWebElement ReasonOfReturnHelpMessage
             => Driver.FindElement(By.XPath(".//div[@id='scgoodsreturnmodel-reason']/following-sibling::div"));
@@ -23,7 +23,7 @@
             => Driver.FindElement(By.XPath(".//div[@id='scgoodsreturnmodel-return_type']/following-sibling::div"));
 
         public IWebElement TypeOfDeliveryHelpMessage
-            => Driver.FindElement(By.XPath(".//select[@id='scgoodsreturnmodel-delivery_id']/following-sibling::div"));
+            => Driver.FindElement(By.XPath(".//*[@class='feedback-suggest-wrap']/following-sibling::div"));
 
         public IEnumerable <IWebElement> RequestReturnLinks
             => Driver.FindElements(By.ClassName("btn-link-i"));

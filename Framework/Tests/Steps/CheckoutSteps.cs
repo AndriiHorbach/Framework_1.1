@@ -38,7 +38,8 @@
 
        [When(@"I proceed to checkout with (.*) name, (.*) mobile, (.*) e-mail")]
         public void WhenIProccedToCheckoutWith(string ReceiverName, string ReceiverMobile, string ReceiverEmail)
-        {            
+        {
+            Page.Wait.Until(ExpectedConditions.ElementIsVisible(By.Name("topurchasesfromcatalog")));
             Button.Click(Page.BuyButtons.First());
             Page.Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("cart-popup")));
             Button.Click(Page.CheckoutButton);

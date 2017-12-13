@@ -15,7 +15,8 @@
 
         public WebDriverWait Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
 
-
+        public  void WaitForPageLoad()
+            => Wait.Until(Driver => ((IJavaScriptExecutor)Driver).ExecuteScript("return document.readyState").Equals("complete"));
 
         //public Object evaluateJavascript(final String script)
         //{
