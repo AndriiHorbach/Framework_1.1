@@ -1,6 +1,5 @@
-﻿namespace Framework.Pages
+﻿namespace Framework.Infrastructure.Pages
 {
-
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.UI;
     using System;
@@ -8,12 +7,7 @@
 
     public  class BasePage
     {
-
-        protected static IWebDriver Driver = SeleniumDriver.getDriver();
-        public BasePage(IWebDriver driver)
-            => driver = Driver;
-
-        public WebDriverWait Wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+        public WebDriverWait Wait = new WebDriverWait(SeleniumDriver.GetDriver(), TimeSpan.FromSeconds(10));
 
         public  void WaitForPageLoad()
             => Wait.Until(Driver => ((IJavaScriptExecutor)Driver).ExecuteScript("return document.readyState").Equals("complete"));
@@ -28,5 +22,8 @@
         //{
         //    evaluateJavascript("window.scrollBy(0, document.documentElement.scrollHeight)");
         //}
+
+  
+
     }
 }

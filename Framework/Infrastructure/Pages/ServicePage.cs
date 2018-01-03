@@ -1,40 +1,32 @@
-﻿namespace Framework.Pages
+﻿namespace Framework.Infrastructure.Pages
 {
     using OpenQA.Selenium;
     using System.Collections.Generic;
+    using OpenQA.Selenium.Support.PageObjects;
 
     class ServicePage : BasePage
     {
-        public ServicePage(IWebDriver driver) : base(driver) { }
-
         public string URL = "http://service.rozetka.com.ua/";
-        public string ReasonOfReturnMessage = "Необходимо заполнить «Причина возврата».";
-        public string IssueDetailsMessage = "Необходимо заполнить «Описание неисправности».";
-        public string TypeOfReturnMessage = "Необходимо заполнить «Цель возврата».";
-        public string TypeOfDeliveryMessage = "Необходимо заполнить «Способ отправки».";
 
-        public IWebElement ReasonOfReturnHelpMessage
-            => Driver.FindElement(By.XPath(".//div[@id='scgoodsreturnmodel-reason']/following-sibling::div"));
+        [FindsBy(How = How.XPath, Using = ".//div[@id='scgoodsreturnmodel-reason']/following-sibling::div")]
+        public IWebElement ReasonOfReturnHelpMessage;
 
-        public IWebElement IssueDetailsDivHelpMessage
-            => Driver.FindElement(By.XPath(".//textarea[@id='scgoodsreturnmodel-message']/following-sibling::div"));
+        [FindsBy(How = How.XPath, Using = ".//textarea[@id='scgoodsreturnmodel-message']/following-sibling::div")]
+        public IWebElement IssueDetailsDivHelpMessage;
 
-        public IWebElement TypeOfReturnHelpMessage
-            => Driver.FindElement(By.XPath(".//div[@id='scgoodsreturnmodel-return_type']/following-sibling::div"));
+        [FindsBy(How = How.XPath, Using = ".//div[@id='scgoodsreturnmodel-return_type']/following-sibling::div")]
+        public IWebElement TypeOfReturnHelpMessage;
 
-        public IWebElement TypeOfDeliveryHelpMessage
-            => Driver.FindElement(By.XPath(".//*[@class='feedback-suggest-wrap']/following-sibling::div"));
+        [FindsBy(How = How.XPath, Using = ".//*[@class='feedback-suggest-wrap']/following-sibling::div")]
+        public IWebElement TypeOfDeliveryHelpMessage;
 
-        public IEnumerable <IWebElement> RequestReturnLinks
-            => Driver.FindElements(By.ClassName("btn-link-i"));
+        [FindsBy(How = How.ClassName, Using = "btn-link-i")]
+        public IList <IWebElement> RequestReturnLinks;
 
-        public IEnumerable<IWebElement> SubmitRequestButtons
-            => Driver.FindElements(By.ClassName("detail-buy-btn-container"));
+        [FindsBy(How = How.ClassName, Using = "detail-buy-btn-container")]
+        public IList<IWebElement> SubmitRequestButtons;
 
-        //public IEnumerable<IWebElement> HelpBlocks
-        //   => Driver.FindElements(By.ClassName("help-block"));
-
-        public IWebElement SendRequestButton
-            => Driver.FindElement(By.ClassName("field-submit-checked"));
+        [FindsBy(How = How.ClassName, Using = "field-submit-checked")]
+        public IWebElement SendRequestButton;
     }
 }

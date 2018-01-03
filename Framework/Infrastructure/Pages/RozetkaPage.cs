@@ -1,41 +1,39 @@
-﻿namespace Framework.RozetkaPages
+﻿namespace Framework.Infrastructure.Pages
 {
     using System.Collections.Generic;
     using OpenQA.Selenium;
-    using global::Framework.Pages;
-    using global::Framework.SharedSteps;
+    using OpenQA.Selenium.Support.PageObjects;
+    using SeleniumDriver;
 
     public class RozetkaPage : BasePage
     {
-        public RozetkaPage(IWebDriver driver) : base(driver) { }
-
         public string URL = "http://rozetka.com.ua/";
 
-        public IWebElement SearchField
-            => Driver.FindElement(By.Name("text"));
+        [FindsBy(How = How.Name, Using = "text")]
+        public IWebElement SearchField;
 
-        public IEnumerable<IWebElement> BuyButtons
-            => Driver.FindElements(By.Name("topurchasesfromcatalog"));
+        [FindsBy(How = How.Name, Using = "topurchasesfromcatalog")]
+        public IList<IWebElement> BuyButtons;
 
-        public IWebElement CheckoutButton
-            => Driver.FindElement(By.Id("popup-checkout"));
+        [FindsBy(How = How.Id, Using = "popup-checkout")]
+        public IWebElement CheckoutButton;
 
-        public IWebElement ReceiverName
-            => Driver.FindElement(By.Id("reciever_name"));
+        [FindsBy(How = How.Id, Using = "reciever_name")]
+        public IWebElement ReceiverName;
 
-        public IWebElement ReceiverPhone
-            => Driver.FindElement(By.Id("reciever_phone"));
+        [FindsBy(How = How.Id, Using = "reciever_phone")]
+        public IWebElement ReceiverPhone;
 
-        public IWebElement ReceiverEmail
-            => Driver.FindElement(By.Id("reciever_email"));
+        [FindsBy(How = How.Id, Using = "reciever_email")]
+        public IWebElement ReceiverEmail;
 
-        public IWebElement NextButton
-            => Driver.FindElement(By.XPath("//button[@tabindex='6']"));
+        [FindsBy(How = How.XPath, Using = "//button[@tabindex='6']")]
+        public IWebElement NextButton;
 
-        public IWebElement ConfirmOrderButton
-            => Driver.FindElement(By.Id("make-order"));
+        [FindsBy(How = How.Id, Using = "make-order")]
+        public IWebElement ConfirmOrderButton;            
 
         public FiltersForm Filters
-            => new FiltersForm(Driver.FindElement(By.Id("parameters-filter-form")));
+            => new FiltersForm(SeleniumDriver.GetDriver().FindElement(By.Id("parameters-filter-form")));
     }
 }

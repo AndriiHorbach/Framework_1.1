@@ -13,7 +13,7 @@
         [BeforeScenario]
         public static void InitDriver()
         {
-            Driver = SeleniumDriver.getDriver();            
+            Driver = SeleniumDriver.GetDriver();            
             Driver.Manage().Window.Maximize();
         }
 

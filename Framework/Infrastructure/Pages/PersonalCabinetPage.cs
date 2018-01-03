@@ -1,35 +1,34 @@
-﻿namespace Framework.Pages
+﻿namespace Framework.Infrastructure.Pages
 {
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.PageObjects;
+    using SeleniumDriver;
 
     class PersonalCabinetPage : BasePage
     {
         public string URL = "https://my.rozetka.com.ua";
         public string EmptyWishlistText = "Ваш список желаний пока пуст";
 
-        public PersonalCabinetPage(IWebDriver driver) : base(driver) { }
 
-        public IWebElement LoginField
-            => Driver.FindElement(By.Name("login"));
+        [FindsBy(How = How.Name, Using = "login")]
+        public IWebElement LoginField;
 
-        public IWebElement PasswordField
-            => Driver.FindElement(By.Name("password"));
-    
-        public IWebElement LoginButton
-            => Driver.FindElement(By.XPath("//div[@class='signup-submit']/button/span"));
+        [FindsBy(How = How.Name, Using = "password")]
+        public IWebElement PasswordField;
 
-        public IWebElement WishlistLink
-            => Driver.FindElement(By.XPath("//li[@class='profile-m-i'][3]/a"));
+        [FindsBy(How = How.XPath, Using = "//div[@class='signup-submit']/button/span")]
+        public IWebElement LoginButton;
 
-        public IWebElement EmptyWishlistHeader
-            => Driver.FindElement(By.XPath("//h3[@class='wishlist-i-empty-title']"));
+        [FindsBy(How = How.XPath, Using = "//li[@class='profile-m-i'][3]/a")]
+        public IWebElement WishlistLink;
 
-        public IWebElement FirstWishListButton
-            => Driver.FindElement(By.Id("firstlist_button"));
+        [FindsBy(How = How.XPath, Using = "//h3[@class='wishlist-i-empty-title']")]
+        public IWebElement EmptyWishlistHeader;
+
+        [FindsBy(How = How.Id, Using = "firstlist_button")]
+        public IWebElement FirstWishListButton;
 
         public MenuBar MenuBar
-          => new MenuBar(Driver.FindElement(By.ClassName("flex")));
-
-
+          => new MenuBar(SeleniumDriver.GetDriver().FindElement(By.ClassName("flex")));
     }
 }

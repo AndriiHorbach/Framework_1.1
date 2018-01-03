@@ -1,4 +1,4 @@
-﻿namespace Framework.Pages
+﻿namespace Framework.Infrastructure.Pages
 {
     using OpenQA.Selenium;
     using System.Collections.Generic;

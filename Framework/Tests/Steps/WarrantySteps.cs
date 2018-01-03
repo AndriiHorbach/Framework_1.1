@@ -1,55 +1,40 @@
 ﻿namespace Framework.Tests.Steps
 {
-    using Controls;
-    using SeleniumDriver;
-    using Pages;
     using System.Linq;
     using TechTalk.SpecFlow;
-    using Data;
     using OpenQA.Selenium.Support.UI;
     using OpenQA.Selenium;
-    using TechTalk.SpecFlow.Assist;
     using NUnit.Framework;
+    using Infrastructure.Pages;
 
     [Binding]
     class WarrantySteps
     {
-        private HtmlButton Button = new HtmlButton(SeleniumDriver.getDriver());
-        private HtmlLink Link = new HtmlLink();
-        private readonly ServicePage ServicePage = new ServicePage(SeleniumDriver.getDriver());
-        private readonly WarrantyPage WarrantyPage = new WarrantyPage(SeleniumDriver.getDriver());
-        private readonly PersonalCabinetPage PersonalCabinetPage = new PersonalCabinetPage(SeleniumDriver.getDriver());
+        private readonly PersonalCabinetPage PersonalCabinetPage = PageFactory.GetPage<PersonalCabinetPage>();
+        private readonly ServicePage ServicePage = PageFactory.GetPage<ServicePage>();
+        private readonly WarrantyPage WarrantyPage = PageFactory.GetPage<WarrantyPage>();
 
-        [Then(@"I see following messages")]
-        public void ThenISeeFollowingMessages(Table table)
-        {
-            var errorMessages = table.CreateSet<ErrorMessages>();
-            //table.CompareToSet(errorMessages);
-            //<string<ErrorMessages>>()
-        }
-
-        [Then(@"Return request form is not submitted")]
-        public void ThenReturnRequestFormIsNotSubmitted()
+        [Then(@"I see '(.*)', '(.*)', '(.*)', '(.*)' messages")]
+        public void ThenISeeMessages(string reasonOfReturnMessage, string issueDetailsMessage, string typeOfReturnMessage, string typeOfDeliveryMessage)
         {
             ServicePage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(".//div[@id='scgoodsreturnmodel-reason']/following-sibling::div")));
-            Assert.IsTrue(ServicePage.ReasonOfReturnHelpMessage.Text.Equals(ServicePage.ReasonOfReturnMessage), "Incorrect Reason of Return error message");
-            Assert.IsTrue(ServicePage.IssueDetailsDivHelpMessage.Text.Equals(ServicePage.IssueDetailsMessage), "Incorrect Isuue Details error message");
-            Assert.IsTrue(ServicePage.TypeOfReturnHelpMessage.Text.Equals(ServicePage.TypeOfReturnMessage), "Incorrect Type of Return error message");
-            Assert.IsTrue(ServicePage.TypeOfDeliveryHelpMessage.Text.Equals(ServicePage.TypeOfDeliveryMessage), "Incorrect Type of Delivery error message");
+            Assert.IsTrue(ServicePage.ReasonOfReturnHelpMessage.Text.Equals(reasonOfReturnMessage), "Incorrect Reason of Return error message");
+            Assert.IsTrue(ServicePage.IssueDetailsDivHelpMessage.Text.Equals(issueDetailsMessage), "Incorrect Isuue Details error message");
+            Assert.IsTrue(ServicePage.TypeOfReturnHelpMessage.Text.Equals(typeOfReturnMessage), "Incorrect Type of Return error message");
+            Assert.IsTrue(ServicePage.TypeOfDeliveryHelpMessage.Text.Equals(typeOfDeliveryMessage), "Incorrect Type of Delivery error message");
         }
 
         [When(@"I submit Return request form without mandatory fields")]
         public void WhenISubmitReturnRequestFormWithoutMandatoryFields()
         {
             PersonalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("whitelink")));
-            Link.Click(PersonalCabinetPage.MenuBar.SelectMenuPoint("Гарантия"));
-            Link.Click(WarrantyPage.ServiceLink);
-            Link.Click(ServicePage.RequestReturnLinks.First());
+            PersonalCabinetPage.MenuBar.SelectMenuPoint("Гарантия").Click();
+            WarrantyPage.ServiceLink.Click();
+            ServicePage.RequestReturnLinks.First().Click();      
             ServicePage.Wait.Until((ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.ClassName("detail-buy-btn-container"))));
-            Button.Click(ServicePage.SubmitRequestButtons.First());
+            ServicePage.SubmitRequestButtons.First().Click();
             ServicePage.Wait.Until((ExpectedConditions.ElementIsVisible(By.ClassName("field-submit-checked"))));
-            Button.Click(ServicePage.SendRequestButton);
+            ServicePage.SendRequestButton.Click();
         }
-
     }
 }

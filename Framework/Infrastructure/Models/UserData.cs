@@ -1,4 +1,4 @@
-﻿namespace Framework.Data
+﻿namespace Framework.Models
 {
     public class UserData
     {

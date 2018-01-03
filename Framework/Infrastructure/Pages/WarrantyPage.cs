@@ -1,15 +1,14 @@
-﻿namespace Framework.Pages 
+﻿namespace Framework.Infrastructure.Pages
 {
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.PageObjects;
 
     class WarrantyPage : BasePage
     {
-        public WarrantyPage(IWebDriver driver) : base(driver) { }
-
         public string URL = "https://rozetka.com.ua/warranty/";
-        
-        public IWebElement ServiceLink
-            => Driver.FindElement(By.XPath("//div[@class='text-page']/section[3]/p[4]/a"));
+
+        [FindsBy(How = How.XPath, Using = "//div[@class='text-page']/section[3]/p[4]/a")]
+        public IWebElement ServiceLink;            
     }
 }
 

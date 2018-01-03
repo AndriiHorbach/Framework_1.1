@@ -7,8 +7,6 @@ Scenario: Mandatory fields for goods return request
 	| Login                      | Password |
 	| gorbach.andrey.i@gmail.com | 7442d203 |
 	When I submit Return request form without mandatory fields
-	Then Return request form is not submitted
-	#Then I see following messages
-	#| ReasonOfReturnMessage            | IssueDetailsMessage                     | TypeOfReturnMessage            | TypeOfDeliveryMessage            |
-	#| Причина возврата cannot be blank | Описание неисправности cannot be blank. | Цель возврата cannot be blank. | Способ отправки cannot be blank. |
+	#Then Return request form is not submitted
+	Then I see 'Необходимо заполнить «Причина возврата».', 'Необходимо заполнить «Описание неисправности».', 'Необходимо заполнить «Цель возврата».', 'Необходимо заполнить «Способ отправки».' messages
 	

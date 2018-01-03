@@ -7,7 +7,9 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    interface IInpit
+    interface IInput
     {
+        void SetText(string text);
+        
     }
 }
