@@ -1,6 +1,6 @@
 ﻿namespace Framework.Framework.Controls.Interfaces
 {
-
+    using OpenQA.Selenium;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -9,7 +9,7 @@
 
     interface IInput
     {
-        void SetText(string text);
+        
         
     }
 }

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Framework.Infrastructure.Controls.New
 {
-    class Input : Decorator
+    class Input : HtmlControl
     {
-        private IWebElement wrappedElement;
-
+        
         public void SetText(string text)
         {
-            wrappedElement.Clear();
-            wrappedElement.SendKeys(text);           
+            control.Clear();
+            control.SendKeys(text);           
         }
 
     }

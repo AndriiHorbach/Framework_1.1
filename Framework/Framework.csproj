@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Common\SeleniumDriver.cs" />
+    <Compile Include="Infrastructure\Controls\Elements\DefaultElementFactory.cs" />
+    <Compile Include="Infrastructure\Controls\Elements\IElementFactory.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\IButton.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\IElement.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\ILink.cs" />

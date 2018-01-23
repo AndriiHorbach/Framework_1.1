@@ -22,7 +22,7 @@
         [When(@"I search  (\S+)")]
         public void WhenISearchМонитор(string text)
         {
-            mainPage.SearchField.SetText(text);
+            mainPage.SearchField.SendKeys(text);
         }
 
 
