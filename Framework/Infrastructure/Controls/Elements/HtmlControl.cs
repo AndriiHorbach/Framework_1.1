@@ -1,23 +1,21 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Drawing;
-using Framework.Infrastructure.Controls.Proxies;
-using OpenQA.Selenium.Support.PageObjects;
-using Framework.Infrastructure.Controls.Elements;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Internal;
+using Framework.SeleniumDriver;
+using Framework.Infrastructure.Controls.Interfaces;
 
 namespace Framework.Infrastructure.Controls.New
 {
-    public class HtmlControl : IWebElement
+    public class HtmlControl : IElement
     {
+        private readonly IWebElement MyWrappedElement;
+        private ISearchContext Driver;
 
-        protected HtmlControl control = DefaultElementFactory.GetElement<HtmlControl>();
-
-        protected IWebElement wrappedElement;
+        public HtmlControl(IWebElement webElement) 
+            => MyWrappedElement = webElement;
+        
 
         public string TagName => throw new NotImplementedException();
 
@@ -33,49 +31,51 @@ namespace Framework.Infrastructure.Controls.New
 
         public bool Displayed => throw new NotImplementedException();
 
-        public void Clear()
+        IWebElement IWrapsElement.WrappedElement
         {
-            throw new NotImplementedException();
+            get
+            {
+                return MyWrappedElement is IWrapsElement
+                    ? (MyWrappedElement as IWrapsElement).WrappedElement
+                    : MyWrappedElement;
+            }
         }
 
+        public void Clear()
+            => MyWrappedElement.Clear();
+
         public void Click()
-        {
-            throw new NotImplementedException();
-        }
+            => MyWrappedElement.Click();
 
         public IWebElement FindElement(By by)
         {
-            throw new NotImplementedException();
+            return MyWrappedElement.FindElement(by);
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            throw new NotImplementedException();
+            return MyWrappedElement.FindElements(by);
         }
 
         public string GetAttribute(string attributeName)
         {
-            throw new NotImplementedException();
+            return MyWrappedElement.GetAttribute(attributeName);
         }
 
         public string GetCssValue(string propertyName)
         {
-            throw new NotImplementedException();
+            return MyWrappedElement.GetCssValue(propertyName);
         }
 
         public string GetProperty(string propertyName)
         {
-            throw new NotImplementedException();
+            return MyWrappedElement.GetProperty(propertyName);
         }
 
         public void SendKeys(string text)
-        {
-            throw new NotImplementedException();
-        }
+            => MyWrappedElement.SendKeys(text);
 
         public void Submit()
-        {
-            throw new NotImplementedException();
-        }
+            => MyWrappedElement.Submit();
     }
 }

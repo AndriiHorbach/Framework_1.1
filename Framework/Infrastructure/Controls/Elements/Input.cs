@@ -8,12 +8,8 @@ namespace Framework.Infrastructure.Controls.New
 {
     class Input : HtmlControl
     {
-        
-        public void SetText(string text)
+        public Input(IWebElement webElement) : base(webElement)
         {
-            control.Clear();
-            control.SendKeys(text);           
         }
-
     }
 }
