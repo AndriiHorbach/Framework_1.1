@@ -9,7 +9,6 @@
         private SeleniumDriver() { }
 
         public static IWebDriver GetDriver()
-            => Driver ?? (Driver = new ChromeDriver());
-           
+            => Driver ?? (Driver = new ChromeDriver());           
     }
 }

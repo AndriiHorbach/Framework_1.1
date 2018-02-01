@@ -75,13 +75,13 @@ this.ScenarioSetup(scenarioInfo);
                         "Login",
                         "Password"});
             table1.AddRow(new string[] {
-                        "gorbach.andrey.i@gmail.com",
-                        "7442d203"});
+                        "rozetka_test@ex.ua",
+                        "Password1"});
 #line 4
  testRunner.Given("I am logged in as user in personal cabinet", ((string)(null)), table1, "Given ");
 #line 7
  testRunner.When("I select wishlist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 9
+#line 8
  testRunner.Then("I can create new wishlist", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

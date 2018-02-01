@@ -3,8 +3,9 @@
     using System.Linq;
     using OpenQA.Selenium;
     using System.Collections.Generic;
+    using global::Framework.Infrastructure.Controls;
 
-    public class FiltersForm
+    public class FiltersForm : HtmlControl
     {
         private IWebElement Root;
         public FiltersForm(IWebElement element)

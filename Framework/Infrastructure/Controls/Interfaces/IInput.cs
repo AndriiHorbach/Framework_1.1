@@ -1,15 +1,10 @@
-﻿namespace Framework.Framework.Controls.Interfaces
+﻿namespace Framework.Infrastructure.Controls
 {
-    using OpenQA.Selenium;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    interface IInput
+    interface IInput : IElement
     {
-        
-        
+        void SetText(string text);
+
+        void Submit();
+
     }
 }

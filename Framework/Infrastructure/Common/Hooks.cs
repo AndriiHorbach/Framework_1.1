@@ -7,7 +7,7 @@
     [Binding]
     public static class Hooks
     {
-        public static IWebDriver Driver;
+        private static IWebDriver Driver;
 
         //[BeforeFeature]
         [BeforeScenario]

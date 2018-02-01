@@ -64,11 +64,11 @@ namespace Framework.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Mandatory fields for goods return request")]
+        [NUnit.Framework.DescriptionAttribute("Return request without orders")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void MandatoryFieldsForGoodsReturnRequest()
+        public virtual void ReturnRequestWithoutOrders()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Mandatory fields for goods return request", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Return request without orders", new string[] {
                         "mytag"});
 #line 5
 this.ScenarioSetup(scenarioInfo);
@@ -77,16 +77,15 @@ this.ScenarioSetup(scenarioInfo);
                         "Login",
                         "Password"});
             table1.AddRow(new string[] {
-                        "gorbach.andrey.i@gmail.com",
-                        "7442d203"});
+                        "rozetka_test@ex.ua",
+                        "Password1"});
 #line 6
  testRunner.Given("I am logged in as user in personal cabinet", ((string)(null)), table1, "Given ");
 #line 9
- testRunner.When("I submit Return request form without mandatory fields", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
- testRunner.Then("I see \'Необходимо заполнить «Причина возврата».\', \'Необходимо заполнить «Описание" +
-                    " неисправности».\', \'Необходимо заполнить «Цель возврата».\', \'Необходимо заполнит" +
-                    "ь «Способ отправки».\' messages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I navigate to Return request", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
+ testRunner.Then("I see \'Не найдено ни одного заказа, воспользуйтесь поиском по номеру заказа.\' mes" +
+                    "sage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

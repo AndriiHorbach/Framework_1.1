@@ -2,11 +2,10 @@
 
 
 @mytag
-Scenario: Mandatory fields for goods return request
+Scenario: Return request without orders
 	Given I am logged in as user in personal cabinet
-	| Login                      | Password |
-	| gorbach.andrey.i@gmail.com | 7442d203 |
-	When I submit Return request form without mandatory fields
-	#Then Return request form is not submitted
-	Then I see 'Необходимо заполнить «Причина возврата».', 'Необходимо заполнить «Описание неисправности».', 'Необходимо заполнить «Цель возврата».', 'Необходимо заполнить «Способ отправки».' messages
+	| Login              | Password  |
+	| rozetka_test@ex.ua | Password1 |
+	When I navigate to Return request  
+	Then I see 'Не найдено ни одного заказа, воспользуйтесь поиском по номеру заказа.' message
 	

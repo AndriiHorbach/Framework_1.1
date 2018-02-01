@@ -1,14 +1,7 @@
-﻿namespace Framework.Framework.Controls.Interfaces
+﻿namespace Framework.Infrastructure.Controls
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
-
-    interface IButton
+    interface IButton : IElement
     {
-        void Click1();
+        void Click();
     }
 }

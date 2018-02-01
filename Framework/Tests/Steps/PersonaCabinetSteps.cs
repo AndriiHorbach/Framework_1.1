@@ -19,8 +19,8 @@
         {
             SeleniumDriver.GetDriver().Navigate().GoToUrl(PersonalCabinetPage.URL);
             var userData = table.CreateInstance<UserData>();
-            PersonalCabinetPage.LoginField.SendKeys(userData.Login);
-            PersonalCabinetPage.PasswordField.SendKeys(userData.Password);
+            PersonalCabinetPage.LoginField.SetText(userData.Login);
+            PersonalCabinetPage.PasswordField.SetText(userData.Password);
             PersonalCabinetPage.LoginButton.Click();
         }
 
@@ -30,10 +30,6 @@
             PersonalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//li[@class='profile-m-i'][3]/a")));
             PersonalCabinetPage.WishlistLink.Click();
         }
-
-        [Then(@"wishlist is empty")]
-        public void ThenWishlistIsEmpty()
-            => Assert.IsTrue(PersonalCabinetPage.EmptyWishlistHeader.Text.Equals(PersonalCabinetPage.EmptyWishlistText));
 
         [Then(@"I can create new wishlist")]
         public void ThenICanCreateNewWishlist()

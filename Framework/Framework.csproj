@@ -58,37 +58,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Common\SeleniumDriver.cs" />
-    <Compile Include="Infrastructure\Controls\Elements\DefaultElementFactory.cs" />
-    <Compile Include="Infrastructure\Controls\Elements\IElementFactory.cs" />
+    <Compile Include="Infrastructure\Controls\Elements\Button.cs" />
+    <Compile Include="Infrastructure\Controls\Elements\Form.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\IButton.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\IElement.cs" />
+    <Compile Include="Infrastructure\Controls\Interfaces\IForm.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\ILink.cs" />
     <Compile Include="Infrastructure\Controls\Interfaces\IInput.cs" />
-    <Compile Include="Infrastructure\Controls\Interfaces\IRadioButton.cs" />
-    <Compile Include="Infrastructure\Controls\Elements\Decorator.cs" />
     <Compile Include="Infrastructure\Controls\Elements\HtmlControl.cs" />
     <Compile Include="Infrastructure\Controls\Elements\Input.cs" />
-    <Compile Include="Infrastructure\Controls\Proxies\WebDriverObjectProxy.cs" />
-    <Compile Include="Infrastructure\Controls\Proxies\WebElementListProxy.cs" />
-    <Compile Include="Infrastructure\Controls\Proxies\WebElementProxy.cs" />
-    <Compile Include="Infrastructure\Models\ErrorMessages.cs" />
+    <Compile Include="Infrastructure\Controls\Elements\Link.cs" />
     <Compile Include="Infrastructure\Models\ContactData.cs" />
     <Compile Include="Infrastructure\Models\UserData.cs" />
-    <Compile Include="Infrastructure\Pages\FilterForm.cs" />
-    <Compile Include="Infrastructure\Pages\MainPage.cs" />
-    <Compile Include="Infrastructure\Pages\PageFactory.cs" />
+    <Compile Include="Infrastructure\Pages\Panels\FilterForm.cs" />
+    <Compile Include="Infrastructure\Pages\Page Factory\PageFactory.cs" />
     <Compile Include="Infrastructure\Common\Hooks.cs" />
     <Compile Include="Infrastructure\Pages\BasePage.cs" />
-    <Compile Include="Infrastructure\Pages\MenuBar.cs" />
+    <Compile Include="Infrastructure\Pages\Panels\MenuBar.cs" />
     <Compile Include="Infrastructure\Pages\PersonalCabinetPage.cs" />
-    <Compile Include="Infrastructure\Pages\RozetkaPage.cs" />
+    <Compile Include="Infrastructure\Pages\MainPage.cs" />
     <Compile Include="Infrastructure\Pages\ServicePage.cs" />
     <Compile Include="Infrastructure\Pages\WarrantyPage.cs" />
-    <Compile Include="Tests\Features\PageObjectTest.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PageObjectTest.feature</DependentUpon>
-    </Compile>
     <Compile Include="Tests\Features\Warranty.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -101,7 +91,6 @@
       <DependentUpon>Checkout.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tests\Steps\PageObjectTestSteps.cs" />
     <Compile Include="Tests\Steps\WarrantySteps.cs" />
     <Compile Include="Tests\Steps\PersonaCabinetSteps.cs" />
     <Compile Include="Tests\Features\PersonalCabinet.feature.cs">
@@ -116,10 +105,6 @@
     <None Include="Tests\Features\Checkout.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>Checkout.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Tests\Features\PageObjectTest.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>PageObjectTest.feature.cs</LastGenOutput>
     </None>
     <None Include="Tests\Features\PersonalCabinet.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -10,7 +10,7 @@
     [Binding]
     class RozetkaSteps
     {
-        private readonly RozetkaPage RozetkaPage = PageFactory.GetPage<RozetkaPage>();
+        private readonly MainPage RozetkaPage = PageFactory.GetPage<MainPage>();
 
         [Given(@"I am on the home page")]
         public void GivenIAmOnTheHomePage()
@@ -19,7 +19,7 @@
         [When(@"I search for (\S+)")]
         public void WhenISearchFor(string text)
         {
-            RozetkaPage.SearchField.SendKeys(text);
+            RozetkaPage.SearchField.SetText(text);
             RozetkaPage.SearchField.Submit();
         }
 
@@ -35,13 +35,13 @@
         public void WhenIProccedToCheckoutWith(string ReceiverName, string ReceiverMobile, string ReceiverEmail)
         {
             RozetkaPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.Name("topurchasesfromcatalog")));
-            RozetkaPage.BuyButtons.First().Click();
+            RozetkaPage.BuyButtons.Click();
             RozetkaPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.Id("cart-popup")));
             RozetkaPage.CheckoutButton.Click();
             RozetkaPage.Wait.Until(ExpectedConditions.ElementExists(By.Id("reciever_name")));
-            RozetkaPage.ReceiverName.SendKeys(ReceiverName);
-            RozetkaPage.ReceiverPhone.SendKeys(ReceiverMobile);
-            RozetkaPage.ReceiverEmail.SendKeys(ReceiverEmail);
+            RozetkaPage.ReceiverName.SetText(ReceiverName);
+            RozetkaPage.ReceiverPhone.SetText(ReceiverMobile);
+            RozetkaPage.ReceiverEmail.SetText(ReceiverEmail);
         }
 
         [Then(@"I cannot confirm order")]

@@ -1,10 +1,11 @@
 ﻿namespace Framework.Infrastructure.Pages
 {
+    using global::Framework.Infrastructure.Controls;
     using OpenQA.Selenium;
     using System.Collections.Generic;
     using System.Linq;
 
-    class MenuBar
+    class MenuBar : HtmlControl
     {
         private IWebElement Root;
         public MenuBar(IWebElement element)

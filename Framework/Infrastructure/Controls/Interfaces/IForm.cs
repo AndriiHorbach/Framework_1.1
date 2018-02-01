@@ -1,7 +1,7 @@
 ﻿namespace Framework.Infrastructure.Controls
 {
-    interface ILink : IElement
+    interface IForm : IElement
     {
-
+        string GetText { get; }
     }
 }

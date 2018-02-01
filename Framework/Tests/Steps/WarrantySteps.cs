@@ -14,27 +14,19 @@
         private readonly ServicePage ServicePage = PageFactory.GetPage<ServicePage>();
         private readonly WarrantyPage WarrantyPage = PageFactory.GetPage<WarrantyPage>();
 
-        [Then(@"I see '(.*)', '(.*)', '(.*)', '(.*)' messages")]
-        public void ThenISeeMessages(string reasonOfReturnMessage, string issueDetailsMessage, string typeOfReturnMessage, string typeOfDeliveryMessage)
+        [Then(@"I see '(.*)' message")]
+        public void ThenISeeMessages(string ordersMessage)
         {
-            ServicePage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(".//div[@id='scgoodsreturnmodel-reason']/following-sibling::div")));
-            Assert.IsTrue(ServicePage.ReasonOfReturnHelpMessage.Text.Equals(reasonOfReturnMessage), "Incorrect Reason of Return error message");
-            Assert.IsTrue(ServicePage.IssueDetailsDivHelpMessage.Text.Equals(issueDetailsMessage), "Incorrect Isuue Details error message");
-            Assert.IsTrue(ServicePage.TypeOfReturnHelpMessage.Text.Equals(typeOfReturnMessage), "Incorrect Type of Return error message");
-            Assert.IsTrue(ServicePage.TypeOfDeliveryHelpMessage.Text.Equals(typeOfDeliveryMessage), "Incorrect Type of Delivery error message");
+            ServicePage.Wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div.service-orders>p")));
+            Assert.IsTrue(ServicePage.ServiceOrdersMessage.GetText.Equals(ordersMessage), "Incorrect Reason of Return error message");
         }
 
-        [When(@"I submit Return request form without mandatory fields")]
+        [When(@"I navigate to Return request")]
         public void WhenISubmitReturnRequestFormWithoutMandatoryFields()
         {
             PersonalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("whitelink")));
             PersonalCabinetPage.MenuBar.SelectMenuPoint("Гарантия").Click();
             WarrantyPage.ServiceLink.Click();
-            ServicePage.RequestReturnLinks.First().Click();      
-            ServicePage.Wait.Until((ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.ClassName("detail-buy-btn-container"))));
-            ServicePage.SubmitRequestButtons.First().Click();
-            ServicePage.Wait.Until((ExpectedConditions.ElementIsVisible(By.ClassName("field-submit-checked"))));
-            ServicePage.SendRequestButton.Click();
         }
     }
 }

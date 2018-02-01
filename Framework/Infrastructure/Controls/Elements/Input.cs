@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using OpenQA.Selenium;
-using System.Threading.Tasks;
-
-namespace Framework.Infrastructure.Controls.New
+﻿namespace Framework.Infrastructure.Controls
 {
-    class Input : HtmlControl
+    class Input : HtmlControl, IInput
     {
-        public Input(IWebElement webElement) : base(webElement)
+        public void SetText (string text)
         {
+            Clear();
+            SendKeys(text);
+        }
+
+        new public void Submit()
+        {
+            base.Submit();
+        }
+
+        new public bool Displayed
+        {
+            get { return base.Displayed; }
         }
     }
 }
