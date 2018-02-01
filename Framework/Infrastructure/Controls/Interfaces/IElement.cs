@@ -1,4 +1,4 @@
-﻿namespace Framework.Infrastructure.Controls
+﻿namespace Framework.Infrastructure.Controls.Interfaces
 {
     interface IElement 
     {

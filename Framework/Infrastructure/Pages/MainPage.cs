@@ -1,13 +1,15 @@
-﻿namespace Framework.Infrastructure.Pages
+﻿using Framework.Infrastructure.Common;
+using Framework.Infrastructure.Controls.Elements;
+using Framework.Infrastructure.Pages.Panels;
+
+namespace Framework.Infrastructure.Pages
 {
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.PageObjects;
-    using SeleniumDriver;
-    using global::Framework.Infrastructure.Controls;
 
     class MainPage : BasePage
     {
-        public readonly string URL = "http://rozetka.com.ua/";
+        public readonly string Url = "http://rozetka.com.ua/";
 
         [FindsBy(How = How.Name, Using = "text")]
         public Input SearchField;

@@ -1,34 +1,34 @@
-﻿namespace Framework.Infrastructure.Pages
-{
-    using OpenQA.Selenium.Support.PageObjects;
-    using OpenQA.Selenium;
-    using System.Reflection;
-    using static System.Reflection.BindingFlags;
-    using static System.Activator;
-    using System.Linq;
-    using Framework.Infrastructure.Controls;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using Framework.Infrastructure.Controls.Elements;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 
+namespace Framework.Infrastructure.Pages.Page_Factory
+{
     public static class PageFactory
     {
-        const BindingFlags NonPublicInstance = NonPublic | Instance;
+        const BindingFlags NonPublicInstance = BindingFlags.NonPublic | BindingFlags.Instance;
 
         public static T GetPage<T>()
         {
-            var page = CreateInstance<T>();
-            typeof(T).GetFields(Public | NonPublicInstance)
+            var page = Activator.CreateInstance<T>();
+            typeof(T).GetFields(BindingFlags.Public | NonPublicInstance)
                 .ToList()
                 .ForEach(field =>
                 {
                     var fieldType = field.FieldType;
                     var attributes = field.GetCustomAttributes<FindsByAttribute>();
-                    if (attributes.Any())
+                    var findsByAttributes = attributes as FindsByAttribute[] ?? attributes.ToArray();
+                    if (findsByAttributes.Any())
                     {
-                        var obj = CreateInstance(fieldType);
-                        var attribute = attributes.Single();
+                        var obj = Activator.CreateInstance(fieldType);
+                        var attribute = findsByAttributes.Single();
                         fieldType.GetField(nameof(HtmlControl.Locator), NonPublicInstance)
-                            .SetValue(obj, typeof(By)
-                                .GetMethod(attribute.How.ToString(), Public | Static)
-                                .Invoke(null, new object[] { attribute.Using }));
+                            ?.SetValue(obj, typeof(By)
+                                .GetMethod(attribute.How.ToString(), BindingFlags.Public | BindingFlags.Static)
+                                ?.Invoke(null, new object[] { attribute.Using }));
                         field.SetValue(page, obj);
                     }
                 });

@@ -1,9 +1,9 @@
-﻿namespace Framework.Infrastructure.Controls
-{
-    using System.Collections.ObjectModel;
-    using OpenQA.Selenium;
-    using SeleniumDriver;
+﻿using System.Collections.ObjectModel;
+using Framework.Infrastructure.Common;
+using OpenQA.Selenium;
 
+namespace Framework.Infrastructure.Controls.Elements
+{
     public class HtmlControl
     {
         internal By Locator;

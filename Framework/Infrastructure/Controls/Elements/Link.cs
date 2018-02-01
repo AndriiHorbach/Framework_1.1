@@ -1,18 +1,14 @@
-﻿namespace Framework.Infrastructure.Controls
+﻿using Framework.Infrastructure.Controls.Interfaces;
+
+namespace Framework.Infrastructure.Controls.Elements
 {
     class Link : HtmlControl, ILink
     {
-        new public void Click()
+        public new void Click()
             => base.Click();        
 
-        public string  GetText
-        {
-            get { return Text; }
-        }
+        public string  GetText => Text;
 
-        new public bool Displayed
-        {
-            get { return base.Displayed; }
-        }
+        public new bool Displayed => base.Displayed;
     }
 }

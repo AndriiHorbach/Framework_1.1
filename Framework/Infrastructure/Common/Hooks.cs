@@ -1,25 +1,24 @@
-﻿namespace Framework.Hooks
-{
-    using OpenQA.Selenium;
-    using TechTalk.SpecFlow;
-    using SeleniumDriver;
+﻿using OpenQA.Selenium;
+using TechTalk.SpecFlow;
 
+namespace Framework.Infrastructure.Common
+{
     [Binding]
     public static class Hooks
     {
-        private static IWebDriver Driver;
+        private static IWebDriver _driver;
 
         //[BeforeFeature]
         [BeforeScenario]
         public static void InitDriver()
         {
-            Driver = SeleniumDriver.GetDriver();            
-            Driver.Manage().Window.Maximize();
+            _driver = SeleniumDriver.GetDriver();            
+            _driver.Manage().Window.Maximize();
         }
 
         //[AfterFeature]
         [AfterScenario]
         public static void DisposeDriver() 
-            => Driver.Dispose();
+            => _driver.Dispose();
     }
 }

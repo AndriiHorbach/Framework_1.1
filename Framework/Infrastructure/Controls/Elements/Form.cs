@@ -1,15 +1,11 @@
-﻿namespace Framework.Infrastructure.Controls
+﻿using Framework.Infrastructure.Controls.Interfaces;
+
+namespace Framework.Infrastructure.Controls.Elements
 {
     class Form : HtmlControl, IForm
     {
-        public string GetText
-        {
-            get { return Text; }
-        }
+        public string GetText => Text;
 
-        new public bool Displayed
-        {
-            get { return Displayed; }
-        }
+        public new bool Displayed => Displayed;
     }
 }

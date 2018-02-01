@@ -1,4 +1,6 @@
-﻿namespace Framework.Infrastructure.Controls
+﻿using Framework.Infrastructure.Controls.Interfaces;
+
+namespace Framework.Infrastructure.Controls.Elements
 {
     class Input : HtmlControl, IInput
     {
@@ -8,14 +10,11 @@
             SendKeys(text);
         }
 
-        new public void Submit()
+        public new void Submit()
         {
             base.Submit();
         }
 
-        new public bool Displayed
-        {
-            get { return base.Displayed; }
-        }
+        public new bool Displayed => base.Displayed;
     }
 }

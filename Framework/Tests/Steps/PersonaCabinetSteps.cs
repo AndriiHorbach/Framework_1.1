@@ -1,7 +1,9 @@
-﻿namespace Framework.Tests.Steps
+﻿using Framework.Infrastructure.Common;
+using Framework.Infrastructure.Models;
+using Framework.Infrastructure.Pages.Page_Factory;
+
+namespace Framework.Tests.Steps
 {
-    using Models;
-    using SeleniumDriver;
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
     using NUnit.Framework;
@@ -12,27 +14,27 @@
     [Binding]
     class PersonaCabinetSteps
     {
-        private readonly PersonalCabinetPage PersonalCabinetPage = PageFactory.GetPage<PersonalCabinetPage>();
+        private readonly PersonalCabinetPage _personalCabinetPage = PageFactory.GetPage<PersonalCabinetPage>();
 
         [Given(@"I am logged in as user in personal cabinet")]
         public void GivenIAmLoggedInAsUserInPersonalCabinet(Table table)
         {
-            SeleniumDriver.GetDriver().Navigate().GoToUrl(PersonalCabinetPage.URL);
+            SeleniumDriver.GetDriver().Navigate().GoToUrl(_personalCabinetPage.Url);
             var userData = table.CreateInstance<UserData>();
-            PersonalCabinetPage.LoginField.SetText(userData.Login);
-            PersonalCabinetPage.PasswordField.SetText(userData.Password);
-            PersonalCabinetPage.LoginButton.Click();
+            _personalCabinetPage.LoginField.SetText(userData.Login);
+            _personalCabinetPage.PasswordField.SetText(userData.Password);
+            _personalCabinetPage.LoginButton.Click();
         }
 
         [When(@"I select wishlist")]
         public void WhenISelectWishlist()
         {
-            PersonalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//li[@class='profile-m-i'][3]/a")));
-            PersonalCabinetPage.WishlistLink.Click();
+            _personalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//li[@class='profile-m-i'][3]/a")));
+            _personalCabinetPage.WishlistLink.Click();
         }
 
         [Then(@"I can create new wishlist")]
         public void ThenICanCreateNewWishlist()
-            => Assert.IsTrue(PersonalCabinetPage.FirstWishListButton.Displayed);        
+            => Assert.IsTrue(_personalCabinetPage.FirstWishListButton.Displayed);        
     }
 }

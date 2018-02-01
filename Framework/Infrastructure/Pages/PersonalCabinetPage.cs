@@ -1,13 +1,15 @@
-﻿namespace Framework.Infrastructure.Pages
+﻿using Framework.Infrastructure.Common;
+using Framework.Infrastructure.Controls.Elements;
+using Framework.Infrastructure.Pages.Panels;
+
+namespace Framework.Infrastructure.Pages
 {
-    using global::Framework.Infrastructure.Controls;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.PageObjects;
-    using SeleniumDriver;
 
     class PersonalCabinetPage : BasePage
     {
-        public readonly string URL = "https://my.rozetka.com.ua";
+        public readonly string Url = "https://my.rozetka.com.ua";
 
         [FindsBy(How = How.Name, Using = "login")]
         public Input LoginField;

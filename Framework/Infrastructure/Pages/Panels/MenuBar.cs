@@ -1,16 +1,16 @@
-﻿namespace Framework.Infrastructure.Pages
-{
-    using global::Framework.Infrastructure.Controls;
-    using OpenQA.Selenium;
-    using System.Collections.Generic;
-    using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Framework.Infrastructure.Controls.Elements;
+using OpenQA.Selenium;
 
+namespace Framework.Infrastructure.Pages.Panels
+{
     class MenuBar : HtmlControl
     {
-        private IWebElement Root;
+        private readonly IWebElement _root;
         public MenuBar(IWebElement element)
-            => Root = element;
-        public IEnumerable <IWebElement> Menu => Root.FindElements(By.ClassName("whitelink"));
+            => _root = element;
+        public IEnumerable <IWebElement> Menu => _root.FindElements(By.ClassName("whitelink"));
 
         public IWebElement SelectMenuPoint(string linkName)
             => Menu.First(e => e.Text.Contains(linkName));

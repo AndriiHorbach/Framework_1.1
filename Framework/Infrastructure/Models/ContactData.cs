@@ -1,4 +1,4 @@
-﻿namespace Framework.Models
+﻿namespace Framework.Infrastructure.Models
 {
     public class ContactData
     {
