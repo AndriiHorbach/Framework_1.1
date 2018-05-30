@@ -12,7 +12,7 @@ namespace Framework.Infrastructure.Controls.Elements
 
         protected string Text => WrappedElement.Text;
 
-        protected bool Displayed => WrappedElement.Displayed;
+        public bool Displayed => WrappedElement.Displayed;
 
         public void Clear()
             => WrappedElement.Clear();

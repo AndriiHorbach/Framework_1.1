@@ -5,7 +5,5 @@ namespace Framework.Infrastructure.Controls.Elements
     class Form : HtmlControl, IForm
     {
         public string GetText => Text;
-
-        public new bool Displayed => Displayed;
     }
 }

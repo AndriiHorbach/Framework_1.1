@@ -8,7 +8,7 @@ namespace Framework.Infrastructure.Common
     {
         private static IWebDriver _driver;
 
-        //[BeforeFeature]
+        [BeforeFeature]
         [BeforeScenario]
         public static void InitDriver()
         {
@@ -16,7 +16,7 @@ namespace Framework.Infrastructure.Common
             _driver.Manage().Window.Maximize();
         }
 
-        //[AfterFeature]
+        [AfterFeature]
         [AfterScenario]
         public static void DisposeDriver() 
             => _driver.Dispose();

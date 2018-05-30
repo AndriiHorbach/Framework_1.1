@@ -17,7 +17,7 @@ namespace Framework.Infrastructure.Pages
         [FindsBy(How = How.Name, Using = "topurchasesfromcatalog")]
         public Button BuyButtons;
 
-        [FindsBy(How = How.Id, Using = "popup-checkout")]
+        [FindsBy(How = How.XPath, Using = "//div[@id='cart-popup']//button[@id='popup-checkout']")]
         public Button CheckoutButton;
 
         [FindsBy(How = How.Id, Using = "reciever_name")]
@@ -29,7 +29,7 @@ namespace Framework.Infrastructure.Pages
         [FindsBy(How = How.Id, Using = "reciever_email")]
         public Input ReceiverEmail;
 
-        [FindsBy(How = How.XPath, Using = "//button[@tabindex='6']")]
+        [FindsBy(How = How.XPath, Using = "//span[@class='btn-link btn-link-green check-step-btn-link opaque']/button")]
         public Button NextButton;
 
         [FindsBy(How = How.Id, Using = "make-order")]

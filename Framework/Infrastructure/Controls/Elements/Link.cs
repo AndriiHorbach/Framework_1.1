@@ -8,7 +8,5 @@ namespace Framework.Infrastructure.Controls.Elements
             => base.Click();        
 
         public string  GetText => Text;
-
-        public new bool Displayed => base.Displayed;
     }
 }

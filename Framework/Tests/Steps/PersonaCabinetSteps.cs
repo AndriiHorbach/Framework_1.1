@@ -7,8 +7,6 @@ namespace Framework.Tests.Steps
     using TechTalk.SpecFlow;
     using TechTalk.SpecFlow.Assist;
     using NUnit.Framework;
-    using OpenQA.Selenium.Support.UI;
-    using OpenQA.Selenium;
     using Infrastructure.Pages;
 
     [Binding]
@@ -29,7 +27,7 @@ namespace Framework.Tests.Steps
         [When(@"I select wishlist")]
         public void WhenISelectWishlist()
         {
-            _personalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//li[@class='profile-m-i'][3]/a")));
+            _personalCabinetPage.Wait.Until(condition => _personalCabinetPage.IsElementDisplayed(_personalCabinetPage.WishlistLink));
             _personalCabinetPage.WishlistLink.Click();
         }
 

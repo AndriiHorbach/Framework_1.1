@@ -14,7 +14,5 @@ namespace Framework.Infrastructure.Controls.Elements
         {
             base.Submit();
         }
-
-        public new bool Displayed => base.Displayed;
     }
 }

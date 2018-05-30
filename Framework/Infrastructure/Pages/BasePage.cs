@@ -2,6 +2,7 @@
 
 namespace Framework.Infrastructure.Pages
 {
+    using Framework.Infrastructure.Controls.Elements;
     using OpenQA.Selenium;
     using OpenQA.Selenium.Support.UI;
     using System;
@@ -12,5 +13,14 @@ namespace Framework.Infrastructure.Pages
 
         public void WaitForPageLoad()
             => Wait.Until(driver => ((IJavaScriptExecutor)driver).ExecuteScript("return document.readyState").Equals("complete"));
+
+        public bool  IsElementDisplayed(HtmlControl control)
+        {            
+            try
+            {
+                return control.Displayed;
+            }
+            catch (Exception) { return false; }
+        }        
     }
 }

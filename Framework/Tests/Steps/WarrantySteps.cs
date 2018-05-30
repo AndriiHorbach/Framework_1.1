@@ -3,8 +3,6 @@
 namespace Framework.Tests.Steps
 {
     using TechTalk.SpecFlow;
-    using OpenQA.Selenium.Support.UI;
-    using OpenQA.Selenium;
     using NUnit.Framework;
     using Infrastructure.Pages;
 
@@ -18,14 +16,14 @@ namespace Framework.Tests.Steps
         [Then(@"I see '(.*)' message")]
         public void ThenISeeMessages(string ordersMessage)
         {
-            _servicePage.Wait.Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div.service-orders>p")));
+            _personalCabinetPage.Wait.Until(condition => _servicePage.IsElementDisplayed(_servicePage.ServiceOrdersMessage));
             Assert.IsTrue(_servicePage.ServiceOrdersMessage.GetText.Equals(ordersMessage), "Incorrect Reason of Return error message");
         }
 
         [When(@"I navigate to Return request")]
         public void WhenISubmitReturnRequestFormWithoutMandatoryFields()
         {
-            _personalCabinetPage.Wait.Until(ExpectedConditions.ElementIsVisible(By.ClassName("whitelink")));
+            _personalCabinetPage.WaitForPageLoad();
             _personalCabinetPage.MenuBar.SelectMenuPoint("Гарантия").Click();
             _warrantyPage.ServiceLink.Click();
         }

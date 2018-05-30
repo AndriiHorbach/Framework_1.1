@@ -6,7 +6,5 @@ namespace Framework.Infrastructure.Controls.Elements
     {
        public new void Click()
            => base.Click();
-
-       public new bool Displayed => base.Displayed;
     }
 }
